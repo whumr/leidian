@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>data</key>
+		<dict>
+			<key>level.practice</key>
+			<string>练习</string>
+			<key>level.level1</key>
+			<string>第一关</string>
+			<key>level.level2</key>
+			<string>第二关</string>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>1</integer>
+		</dict>
+    </dict>
+</plist>

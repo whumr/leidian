@@ -40,10 +40,12 @@ bool Level::init()
     sp->setPosition(Vec2(size.width*0.5,size.height*0.5));
     addChild(sp);
     
+	auto conf = Configuration::getInstance();
+
     //创建Level菜单项-settings
-	MenuItemFont *levelOne = MenuItemFont::create("练习", CC_CALLBACK_1(Level::Level1, this));    //可以点击的字体
-    MenuItemFont *levelTwo = MenuItemFont::create("第一关", CC_CALLBACK_1(Level::Level2, this));
-    MenuItemFont *levelThree = MenuItemFont::create("第二关", CC_CALLBACK_1(Level::Level3, this));
+	MenuItemFont *levelOne = MenuItemFont::create(conf->getValue("level.practice").asString(), CC_CALLBACK_1(Level::Level1, this));    //可以点击的字体
+    MenuItemFont *levelTwo = MenuItemFont::create(conf->getValue("level.level1").asString(), CC_CALLBACK_1(Level::Level2, this));
+    MenuItemFont *levelThree = MenuItemFont::create(conf->getValue("level.level2").asString(), CC_CALLBACK_1(Level::Level3, this));
     
     //利用一个菜单项创建一个Menu
     Menu* menu =Menu::create(levelOne, levelTwo, levelThree, NULL);

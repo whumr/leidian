@@ -32,8 +32,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     Director *pDirector = Director::getInstance();
 	auto glview = pDirector->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
-        pDirector->setOpenGLView(glview);
+        glview = GLViewImpl::create("My Game");        
+		glview->setFrameSize(512,768);
+		//glview->setFrameZoomFactor(0.6f);
+		pDirector->setOpenGLView(glview);
     }
 
     // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
@@ -50,6 +52,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // run
     pDirector->runWithScene(pScene);
+
+	Configuration::getInstance()->loadConfigFile("strings.plist");
 
     return true;
 }
