@@ -274,7 +274,7 @@ void HWorld::lostGame()
 //菜单项"返回主菜单"的回调函数
 void HWorld::backMenu(Ref* psend)
 {
-    this->unscheduleAllSelectors();
+    this->unscheduleAllCallbacks();
     //继续游戏
     Director::getInstance()->resume();
     //切换到"菜单"场景

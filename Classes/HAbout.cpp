@@ -32,16 +32,16 @@ bool HAbout::init()
     logo->setPosition(Vec2(size.width*0.5,size.height*0.5));
     addChild(logo);
     
-    CallFunc *func1 = CallFunc::create(this, callfunc_selector(HAbout::a));
-    CallFunc *func2 = CallFunc::create(this, callfunc_selector(HAbout::b));
-    CallFunc *func3 = CallFunc::create(this, callfunc_selector(HAbout::c));
-    CallFunc *func4 = CallFunc::create(this, callfunc_selector(HAbout::d));
-    CallFunc *func5 = CallFunc::create(this, callfunc_selector(HAbout::e));
-    CallFunc *func6 = CallFunc::create(this, callfunc_selector(HAbout::f));
+	CallFunc *func1 = CallFunc::create(CC_CALLBACK_0(HAbout::a, this));
+    CallFunc *func2 = CallFunc::create(CC_CALLBACK_0(HAbout::b, this));
+    CallFunc *func3 = CallFunc::create(CC_CALLBACK_0(HAbout::c, this));
+    CallFunc *func4 = CallFunc::create(CC_CALLBACK_0(HAbout::d, this));
+    CallFunc *func5 = CallFunc::create(CC_CALLBACK_0(HAbout::e, this));
+    CallFunc *func6 = CallFunc::create(CC_CALLBACK_0(HAbout::f, this));
     this->runAction(Sequence::create(func1,DelayTime::create(4),func2,DelayTime::create(4),func3,DelayTime::create(4),func4,DelayTime::create(4),func5,DelayTime::create(4),func6,NULL));
     
     //添加一个按钮用于切换至Menu菜单场景
-    MenuItemImage * back= MenuItemImage::create("backHomeWord.png", "backHomeWord.png",this,menu_selector(HAbout::backMenu));
+	MenuItemImage * back= MenuItemImage::create("backHomeWord.png", "backHomeWord.png",CC_CALLBACK_1(HAbout::backMenu, this));
     
     //利用一个菜单项创建一个Menu
     Menu* menu =Menu::create(back,NULL);
@@ -52,7 +52,7 @@ bool HAbout::init()
 
 void HAbout::a()
 {
-    CallFunc *func = CallFunc::create(this, callfunc_selector(HAbout::remove));
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(HAbout::remove, this));
     auto size = Director::getInstance()->getWinSize();
     Sprite* girl1 = Sprite::create("aboutGirl1.png");
     girl1->setPosition(Vec2(size.width*0.5,size.height*0.5));
@@ -62,7 +62,7 @@ void HAbout::a()
 
 void HAbout::b()
 {
-    CallFunc *func = CallFunc::create(this, callfunc_selector(HAbout::remove));
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(HAbout::remove, this));
     auto size = Director::getInstance()->getWinSize();
     Sprite* b = Sprite::create("heroBigShow.png");
     b->setPosition(Vec2(size.width*0.5,size.height*0.5));
@@ -71,7 +71,7 @@ void HAbout::b()
 }
 void HAbout::c()
 {
-    CallFunc *func = CallFunc::create(this, callfunc_selector(HAbout::remove));
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(HAbout::remove, this));
     auto size = Director::getInstance()->getWinSize();
     Sprite* c = Sprite::create("plane1Show.png");
     c->setPosition(Vec2(size.width*0.5,size.height*0.5));
@@ -80,7 +80,7 @@ void HAbout::c()
 }
 void HAbout::d()
 {
-    CallFunc *func = CallFunc::create(this, callfunc_selector(HAbout::remove));
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(HAbout::remove, this));
     auto size = Director::getInstance()->getWinSize();
     Sprite* d = Sprite::create("plane2Show.png");
     d->setPosition(Vec2(size.width*0.5,size.height*0.5));
@@ -89,7 +89,7 @@ void HAbout::d()
 }
 void HAbout::e()
 {
-    CallFunc *func = CallFunc::create(this, callfunc_selector(HAbout::remove));
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(HAbout::remove, this));
     auto size = Director::getInstance()->getWinSize();
     Sprite* e = Sprite::create("plane3Show.png");
     e->setPosition(Vec2(size.width*0.5,size.height*0.5));

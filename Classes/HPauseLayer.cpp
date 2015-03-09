@@ -73,7 +73,7 @@ bool HPauseLayer::TouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
         SimpleAudioEngine::getInstance()->stopBackgroundMusic();
         SimpleAudioEngine::getInstance()->stopAllEffects();
         
-        this->unscheduleAllSelectors();
+        this->unscheduleAllCallbacks();
         //继续游戏
         Director::getInstance()->resume();
         //切换到"菜单"场景

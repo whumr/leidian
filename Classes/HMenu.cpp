@@ -51,18 +51,18 @@ bool HMenu::init()
     addChild(sp2);
     
     //创建Menu菜单项-play
-    MenuItemImage * itemPlay= MenuItemImage::create("play_nor.png", "play_pre.png",this,menu_selector(HMenu::playIsPressed));
+	MenuItemImage * itemPlay= MenuItemImage::create("play_nor.png", "play_pre.png",CC_CALLBACK_1(HMenu::playIsPressed, this));
     
     //创建Menu菜单项-score
-    MenuItemImage * itemScore= MenuItemImage::create("score_nor.png", "score_pre.png",this,menu_selector(HMenu::scoreIsPressed));
+    MenuItemImage * itemScore= MenuItemImage::create("score_nor.png", "score_pre.png",CC_CALLBACK_1(HMenu::scoreIsPressed, this));
     itemScore->setPosition(Vec2(0,-itemScore->getContentSize().height-20));
     
     //创建Menu菜单项-about
-    MenuItemImage * itemAbout= MenuItemImage::create("about_nor.png", "about_pre.png",this,menu_selector(HMenu::aboutIsPressed));
+    MenuItemImage * itemAbout= MenuItemImage::create("about_nor.png", "about_pre.png",CC_CALLBACK_1(HMenu::aboutIsPressed, this));
     itemAbout->setPosition(Vec2(0,-itemScore->getContentSize().height*2-40));
     
     //创建Menu菜单项-settings
-    MenuItemImage * itemSettings = MenuItemImage::create("setting.png", "setting.png",this,menu_selector(HMenu::SetttingsIsPressed));
+    MenuItemImage * itemSettings = MenuItemImage::create("setting.png", "setting.png",CC_CALLBACK_1(HMenu::SetttingsIsPressed, this));
     itemSettings->setPosition(Vec2(0,-itemScore->getContentSize().height*3-40));
     
     //利用3个菜单项创建Menu菜单
