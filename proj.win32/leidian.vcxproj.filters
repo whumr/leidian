@@ -13,9 +13,6 @@
     <Filter Include="src\SneakyJoystick">
       <UniqueIdentifier>{20368c10-3650-417e-9480-2d77f0091173}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\util">
-      <UniqueIdentifier>{266545a0-e44d-433a-a002-d4fb212c5996}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
