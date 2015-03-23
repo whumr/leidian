@@ -148,6 +148,13 @@ bool LevelScene::init()
     
     this->schedule(schedule_selector(LevelScene::resetPlayer));
 
+
+	auto _listener_touch = EventListenerTouchOneByOne::create();
+	_listener_touch->onTouchBegan = CC_CALLBACK_2(LevelScene::TouchBegan, this);
+	_listener_touch->onTouchMoved = CC_CALLBACK_2(LevelScene::TouchMoved, this);
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener_touch, this);
+
     return true;
 }
 
@@ -214,7 +221,7 @@ void LevelScene::addPlaneProperty()
     NewPlayer *player = this->getPlayer();
     player->hp=3;//初始化当前血量为3
     player->score=0;//初始化当前积分分数
-    int killCount = player->killCount;
+    player->killCount = 0;
     //初始化hp个血,加入到Layer中
     for (int i =1; i<=player->hp; i++) {
         Sprite* spHp = Sprite::create("icon_hp.png");
@@ -228,8 +235,9 @@ void LevelScene::addPlaneProperty()
         }
         addChild(spHp,10);
     }
+	auto conf = Configuration::getInstance();
     //初始化"分数"文字加入layer中
-    Label* label = Label::createWithSystemFont("分数:", "Helvetica-Blod", 24);
+    Label* label = Label::createWithSystemFont(conf->getValue("label.score").asString(), "Helvetica-Blod", 24);
     label->setPosition(Vec2(30,Director::getInstance()->getWinSize().height-22));
     addChild(label,10);
     
@@ -241,12 +249,12 @@ void LevelScene::addPlaneProperty()
     addChild(labelScores,10,tag_scoreTTF);
     
     //杀敌人数
-    Label* labelKill = Label::createWithSystemFont("杀敌:", "Helvetica-Blod", 24);
+    Label* labelKill = Label::createWithSystemFont(conf->getValue("label.kill").asString(), "Helvetica-Blod", 24);
     labelKill->setPosition(Vec2(30,Director::getInstance()->getWinSize().height-52));
     addChild(labelKill,10);
     
     //杀敌数字加入layer中
-    std::string strKillCount=Convert2String(killCount);
+    std::string strKillCount=Convert2String(player->killCount);
     Label* labelKillCount = Label::createWithSystemFont(strKillCount.c_str(), "Helvetica-Blod", 24);
     labelKillCount->setPosition(Vec2(110,Director::getInstance()->getWinSize().height-52));
     labelKillCount->setColor(Color3B(255, 255, 0));

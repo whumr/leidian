@@ -24,9 +24,6 @@
     <ClCompile Include="..\Classes\Button.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCParallaxNodeExtras.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\EnemyBullet.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -102,9 +99,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Button.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCParallaxNodeExtras.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyBullet.h">

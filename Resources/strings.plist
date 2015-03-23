@@ -10,6 +10,10 @@
 			<string>第一关</string>
 			<key>level.level2</key>
 			<string>第二关</string>
+			<key>label.score</key>
+			<string>分数</string>
+			<key>label.kill</key>
+			<string>杀敌</string>
 		</dict>
 		<key>metadata</key>
 		<dict>

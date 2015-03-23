@@ -139,7 +139,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Button.cpp" />
-    <ClCompile Include="..\Classes\CCParallaxNodeExtras.cpp" />
     <ClCompile Include="..\Classes\EnemyBullet.cpp" />
     <ClCompile Include="..\Classes\Gems.cpp" />
     <ClCompile Include="..\Classes\HAbout.cpp" />
@@ -167,7 +166,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Button.h" />
-    <ClInclude Include="..\Classes\CCParallaxNodeExtras.h" />
     <ClInclude Include="..\Classes\EnemyBullet.h" />
     <ClInclude Include="..\Classes\Gems.h" />
     <ClInclude Include="..\Classes\HAbout.h" />
