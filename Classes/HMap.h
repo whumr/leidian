@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 using namespace cocos2d;
-#include "CCParallaxNodeExtras.h"
+//#include "CCParallaxNodeExtras.h"
 
 typedef enum{
     tag_oneImg,
@@ -32,6 +32,6 @@ private:
     //生命周期函数的退出
     virtual void onExit();
     
-    CCParallaxNodeExtras *_backgroundNode;
+    ParallaxNode *_backgroundNode;
 };
 #endif

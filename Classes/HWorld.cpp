@@ -91,6 +91,12 @@ bool HWorld::init()
     smallEnemyTime2 = 0;
     mediumEnemyTime2 = 0;
 
+	auto _listener_touch = EventListenerTouchOneByOne::create();
+	_listener_touch->onTouchBegan = CC_CALLBACK_2(HWorld::TouchBegan, this);
+	_listener_touch->onTouchMoved = CC_CALLBACK_2(HWorld::TouchMoved, this);
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener_touch, this);
+
     return true;
 }
 
@@ -298,62 +304,3 @@ HWorld::~HWorld()
 {
 	arrayEnemy.clear();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
