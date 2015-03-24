@@ -30,6 +30,7 @@ Gems* Gems::createGem(const char* fileName, int gemTypeTemp){
 
 void Gems::gemInit(int gemTypeTemp){
     gemType = gemTypeTemp;
+	gemMoveCount = 0;
     glintTime = 15*60;
     glintCount = 0;
     isDisappear = false;

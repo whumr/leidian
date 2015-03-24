@@ -29,6 +29,7 @@ void NewPlayer::playerInit()
 {    
     hpMax =3;//初始化血量上限为3
     strongTime=5*60;//初始化无敌时间5秒
+	isDead = false;
 }
 
 //添加积分分数
