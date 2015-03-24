@@ -69,8 +69,8 @@ void NewBullet::update(float time){
             break;
             
     }
-    if(this->getPositionY()<-this->getContentSize().height || this->getPositionY()>size.height+this->getContentSize().height 
-		|| this->getPositionX()<-this->getContentSize().width || this->getPositionX()>size.width+this->getContentSize().width)
+    if(this->getPositionY() < -this->getContentSize().height || this->getPositionY() > size.height + this->getContentSize().height 
+		|| this->getPositionX() < -this->getContentSize().width || this->getPositionX() > size.width + this->getContentSize().width)
     {
         this->removeFromParentAndCleanup(true);
         return;
@@ -82,48 +82,25 @@ void NewBullet::update(float time){
 		NewEnemy* enemy = (NewEnemy*)array.at(i);
         if(enemy->getBoundingBox().intersectsRect(this->getBoundingBox()))
         {
-            switch(bulletType)
-            {
-                case 1:
-                    (enemy->hp)--;
-                    break;
-                case 2:
-                    (enemy->hp)-=3;
-                default:
-                    break;
-            }
-            
-            if(enemy->hp <= 0)
-            {
-                //爆炸音效
-                if(enemy->enemyType == 4)
-                {
-                    SimpleAudioEngine::getInstance()->playEffect("effect_bigBoom.wav");
-                }else
-                {
-                    SimpleAudioEngine::getInstance()->playEffect("effect_boom.mp3");
-                }
-                //爆炸粒子效果
-                ParticleSystemQuad * particle = ParticleSystemQuad::create("particle_boom.plist");
-                particle->setPosition(enemy->getPosition());//怪的位置
-                particle->setAutoRemoveOnFinish(true);//自动释放
-                LevelScene::sharedLevelScene()->addChild(particle);//添加到主layer
-                //增加分数
-                LevelScene::sharedLevelScene()->getPlayer()->addScore(enemy->scoreValue);
-                //添加杀人数
-                LevelScene::sharedLevelScene()->getPlayer()->addKillCount(1);
-                //从敌人数组将被攻击的敌怪删除
-				array.eraseObject(enemy);
-                //删除子弹与敌怪
-                LevelScene::sharedLevelScene()->removeChild(enemy, true);
-                this->removeFromParentAndCleanup(true);
-                break;
-            }else
-            {
-                this->removeFromParentAndCleanup(true);
-                break;
-            }
-            
+			if(enemy->hp > 0 && !enemy->isDead)
+			{				
+				switch(bulletType)
+				{
+					case 1:
+						(enemy->hp)--;
+						break;
+					case 2:
+						(enemy->hp)-=3;
+					default:
+						break;
+				}      
+				if(enemy->hp <= 0 && !enemy->isDead)
+				{
+					enemy->enemyDead();    
+				}
+				this->removeFromParentAndCleanup(true);
+				break;
+			}            
         }
     }
 }

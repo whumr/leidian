@@ -56,6 +56,13 @@ bool LevelScene::init()
     skill3Count = 0;
     allTimeCount = 0;
     BulletDelayCount = 0;
+
+    enemyType1TimeCount = 0;
+    enemyType2TimeCount = 0;
+    enemyType3TimeCount = 0;
+    enemyType4TimeCount = 0;
+    enemyType5TimeCount = 0;
+    enemyType6TimeCount = 0;
     
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("enemy.plist");
     enemyBatchNode = SpriteBatchNode::create("enemy.png");
@@ -395,8 +402,7 @@ void LevelScene::setEnemy(float f)
             if(enemyType1TimeCount>100)
             {
                 enemyType1TimeCount = 0;
-                NewEnemy* enemy = NULL;
-                enemy = NewEnemy::createEnemy("enemy1.png", 0,1);
+                NewEnemy* enemy = NewEnemy::createEnemy("enemy1.png", 0,1);
 				arrayEnemy.pushBack(enemy);
                 enemyBatchNode->addChild(enemy,33);
             }
@@ -410,8 +416,7 @@ void LevelScene::setEnemy(float f)
                 enemyType2TimeCount++;
                 if(enemyType2TimeCount%60==0)
                 {
-                    NewEnemy* enemy = NULL;
-                    enemy = NewEnemy::createEnemy("enemy2.png", 1,0);
+                    NewEnemy* enemy = NewEnemy::createEnemy("enemy2.png", 1,0);
                     arrayEnemy.pushBack(enemy);
                     enemyBatchNode->addChild(enemy);
                 }
@@ -425,8 +430,7 @@ void LevelScene::setEnemy(float f)
             {
                 if(enemyType3TimeCount%25==0)
                 {
-                    NewEnemy* enemy = NULL;
-                    enemy = NewEnemy::createEnemy("enemy3.png", 2,3);
+                    NewEnemy* enemy = NewEnemy::createEnemy("enemy3.png", 2,3);
                     enemy->setPosition(Vec2(0, size.height+enemy->getContentSize().height));
                     arrayEnemy.pushBack(enemy);
                     enemyBatchNode->addChild(enemy);
@@ -441,14 +445,12 @@ void LevelScene::setEnemy(float f)
             {
                 if(enemyType4TimeCount%25==0)
                 {
-                    NewEnemy* enemy = NULL;
-                    enemy = NewEnemy::createEnemy("enemy4.png", 3,4);
+                    NewEnemy* enemy = NewEnemy::createEnemy("enemy4.png", 3,4);
                     enemy->setPosition(Vec2(size.width/2, size.height+enemy->getContentSize().height));
                     arrayEnemy.pushBack(enemy);
                     enemyBatchNode->addChild(enemy);
                     
-                    NewEnemy* enemy1 = NULL;
-                    enemy1 = NewEnemy::createEnemy("enemy4.png", 3,5);
+                    NewEnemy* enemy1 = NewEnemy::createEnemy("enemy4.png", 3,5);
                     enemy1->setPosition(Vec2(size.width/2, size.height+enemy1->getContentSize().height));
                     arrayEnemy.pushBack(enemy1);
                     enemyBatchNode->addChild(enemy1);
@@ -463,8 +465,7 @@ void LevelScene::setEnemy(float f)
             {
                 if(enemyType5TimeCount%25==0)
                 {
-                    NewEnemy* enemy = NULL;
-                    enemy = NewEnemy::createEnemy("enemy3.png", 2,6);
+                    NewEnemy* enemy = NewEnemy::createEnemy("enemy3.png", 2,6);
                     enemy->setPosition(Vec2(0, size.height+enemy->getContentSize().height));
                     arrayEnemy.pushBack(enemy);
                     enemyBatchNode->addChild(enemy);
@@ -479,8 +480,7 @@ void LevelScene::setEnemy(float f)
             {
                 if(enemyType6TimeCount%25==0)
                 {
-                    NewEnemy* enemy = NULL;
-                    enemy = NewEnemy::createEnemy("enemy3.png", 2,7);
+                    NewEnemy* enemy = NewEnemy::createEnemy("enemy3.png", 2,7);
                     enemy->setPosition(Vec2(size.width+enemy->getContentSize().width, size.height+enemy->getContentSize().height));
                     arrayEnemy.pushBack(enemy);
                     enemyBatchNode->addChild(enemy);
@@ -492,8 +492,7 @@ void LevelScene::setEnemy(float f)
         {
             if(!enemyBatchNode->getChildByTag(88))
             {
-                NewEnemy* enemy = NULL;
-                enemy = NewEnemy::createEnemy("enemy5.png", 4,2);
+                NewEnemy* enemy = NewEnemy::createEnemy("enemy5.png", 4,2);
                 arrayEnemy.pushBack(enemy);
                 enemyBatchNode->addChild(enemy,10,88);
             }

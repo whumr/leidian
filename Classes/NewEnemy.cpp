@@ -12,6 +12,8 @@
 #include "SimpleAudioEngine.h"
 #include "Gems.h"
 
+using namespace CocosDenshion;
+
 NewEnemy* NewEnemy::createEnemy(const char* fileName,int _type,int _way){
     NewEnemy* enemy = new NewEnemy();
     if(enemy && enemy->initWithSpriteFrameName(fileName)){
@@ -24,6 +26,8 @@ NewEnemy* NewEnemy::createEnemy(const char* fileName,int _type,int _way){
 }
 //³õÊ¼»¯
 void NewEnemy::enemyInit(const char* fileName,int _type,int _way){
+	isActed = false;
+	isDead = false;
     way=_way;
     enemyType = _type;
     shootManyCount = 0;
@@ -50,7 +54,7 @@ void NewEnemy::enemyInit(const char* fileName,int _type,int _way){
         hp = 200;
     }
  
-    this->setPosition(Vec2(CCRANDOM_0_1()*size.width,size.height+this->getContentSize().height));
+    this->setPosition(Vec2(CCRANDOM_0_1()*size.width, size.height + this->getContentSize().height));
 
     //µÐÈËÂß¼­
     this->scheduleUpdate();
@@ -81,7 +85,7 @@ void NewEnemy::update(float time){
                 break;
             }
             isActed=true;
-            this->runAction(Sequence::create(MoveTo::create(1, Vec2(this->getPositionX(), CCRANDOM_0_1() *200+size.height/2)),func,
+            this->runAction(Sequence::create(MoveTo::create(1, Vec2(this->getPositionX(), CCRANDOM_0_1() *200 + size.height/2)),func,
 				MoveBy::create(2, Vec2(CCRANDOM_0_1() *300 - 150, 0)),func,
 				MoveBy::create(2, Vec2(CCRANDOM_0_1() *300 - 150, 0)),func,
 				MoveBy::create(2, Vec2(CCRANDOM_0_1() *300 - 150, 0)),func,
@@ -190,14 +194,14 @@ void NewEnemy::update(float time){
         LevelScene::sharedLevelScene()->getArrayForEnemy().eraseObject(this);
     }
     
-    if(hp <= 0)
+    if(hp <= 0 && !isDead)
     {
         this->enemyDead();
     }
     
     //Åö×²¼ì²â
     NewPlayer * player = LevelScene::sharedLevelScene()->getPlayer();
-    if(!player->isDead)
+    if(!player->isDead && !isDead)
     {
         if(player->getBoundingBox().intersectsRect(this->getBoundingBox()))
         {
@@ -299,7 +303,14 @@ void NewEnemy::shootOne(Point playerPoint)
 void NewEnemy::enemyDead()
 {
     //±¬Õ¨ÒôÐ§
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("effect_boom.mp3");
+	if(enemyType == 4)
+    {
+        SimpleAudioEngine::getInstance()->playEffect("effect_bigBoom.wav");
+    }
+	else
+    {
+        SimpleAudioEngine::getInstance()->playEffect("effect_boom.mp3");
+    }
     
     //±¬Õ¨Á£×ÓÐ§¹û
     ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_boom.plist");
@@ -324,13 +335,5 @@ void NewEnemy::enemyDead()
 	array.eraseObject(this);
     //É¾³ýµÐ¹Ö
     this->removeFromParentAndCleanup(true);
+	isDead = true;
 }
-
-
-
-
-
-
-
-
-

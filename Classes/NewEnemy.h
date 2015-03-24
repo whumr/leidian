@@ -22,6 +22,8 @@ public:
     //血量
     int hp;
     int enemyType;
+	bool isDead;
+	void enemyDead();
 private:
     //初始化
     void enemyInit(const char* fileName,int _type,int _way);
@@ -29,7 +31,7 @@ private:
     //敌人逻辑
     void update(float time);
     //是否已经运动过了
-    bool isActed;
+    bool isActed;	
     //当前敌人类型
     int way;
     void enemyShoot();
@@ -37,7 +39,7 @@ private:
     int shootManyCount;
     void shootFive(Point playerPoint);
     void shootOne(Point playerPoint);
-    void enemyDead();
+    
     
     int timeCount1;
   

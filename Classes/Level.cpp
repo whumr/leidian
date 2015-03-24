@@ -64,7 +64,7 @@ bool Level::init()
     addChild(plane2,2,33);
     
     //添加一个按钮用于返回Menu
-    MenuItemImage * back= MenuItemImage::create("backHomeWord.png", "backHomeWord.png",this,menu_selector(Level::backMenu));
+	MenuItemImage * back= MenuItemImage::create("backHomeWord.png", "backHomeWord.png", CC_CALLBACK_1(Level::backMenu, this));
     Menu* menu1 =Menu::create(back,NULL);
     menu1->setPosition(Vec2(size.width/2, 30));
     addChild(menu1);
