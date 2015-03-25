@@ -5,6 +5,7 @@ proj.ios_mac/
 proj.linux/
 proj.win32/Debug.win32
 proj.win32/leidian.sdf
+proj.win32/leidian.v12.suo
 proj.win32/leidian.opensdf
 proj.wp8-xaml/
 cocos2d/
