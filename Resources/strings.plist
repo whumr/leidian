@@ -14,6 +14,14 @@
 			<string>分数</string>
 			<key>label.kill</key>
 			<string>杀敌</string>
+			<key>label.backMenu</key>
+			<string>返回主菜单</string>
+			<key>setting.rollbar</key>
+			<string>摇杆怀旧</string>
+			<key>setting.touch</key>
+			<string>手指触摸</string>
+			<key>setting.rollbartip</key>
+			<string>(摇杆怀旧模式仅适用于练习)</string>			
 		</dict>
 		<key>metadata</key>
 		<dict>

@@ -36,9 +36,10 @@ bool HSettings::init()
     sp->setPosition(Vec2(size.width*0.5,size.height*0.5));
     addChild(sp);
     
+	auto conf = Configuration::getInstance();
     //用于切换玩家的操作方式
-	MenuItemFont *itemTouchType = MenuItemFont::create("摇杆怀旧", CC_CALLBACK_1(HSettings::touchTypeChange, this));
-    MenuItemFont *itemTouchType1 = MenuItemFont::create("手指触摸", CC_CALLBACK_1(HSettings::touchTypeChange2, this));
+	MenuItemFont *itemTouchType = MenuItemFont::create(conf->getValue("setting.rollbar").asString(), CC_CALLBACK_1(HSettings::touchTypeChange, this));
+    MenuItemFont *itemTouchType1 = MenuItemFont::create(conf->getValue("setting.touch").asString(), CC_CALLBACK_1(HSettings::touchTypeChange2, this));
     
     //利用一个菜单项创建一个Menu
     Menu* menu =Menu::create(itemTouchType,itemTouchType1,NULL);
@@ -48,7 +49,7 @@ bool HSettings::init()
     menu->alignItemsVerticallyWithPadding(40);       //设置各item的竖向间隔
     
     //注释
-    Label* annotation = Label::createWithSystemFont("(摇杆怀旧模式仅适用于练习)", "Helvetica", 15);
+    Label* annotation = Label::createWithSystemFont(conf->getValue("setting.rollbartip").asString(), "Helvetica", 15);
     annotation->setPosition(Vec2(size.width*0.5-5,size.height*0.5+10));
     annotation->setColor(Color3B(255, 0, 0));
     addChild(annotation);

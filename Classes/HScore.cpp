@@ -64,16 +64,17 @@ bool HScore::init()
     record->setOpacity(100);
     addChild(record,2);
     
+	auto conf = Configuration::getInstance();
     //添加分数标签
-    Label* score1 = Label::createWithSystemFont("练习", "Helvetica", 24);
+    Label* score1 = Label::createWithSystemFont(conf->getValue("level.practice").asString(), "Helvetica", 24);
     score1->setPosition(Vec2(size.width/3,size.height*2/3 -40*(1+1)));
     score1->setColor(Color3B(255, 0, 0));
     addChild(score1,3);
-    Label* score2 = Label::createWithSystemFont("第一关", "Helvetica", 24);
+    Label* score2 = Label::createWithSystemFont(conf->getValue("level.level1").asString(), "Helvetica", 24);
     score2->setPosition(Vec2(size.width/3,size.height*2/3 -40*(2+1)));
     score2->setColor(Color3B(255, 0, 0));
     addChild(score2,3);
-    Label* score3 = Label::createWithSystemFont("第二关", "Helvetica", 24);
+    Label* score3 = Label::createWithSystemFont(conf->getValue("level.level2").asString(), "Helvetica", 24);
     score3->setPosition(Vec2(size.width/3,size.height*2/3 -40*(3+1)));
     score3->setColor(Color3B(255, 0, 0));
     addChild(score3,3);

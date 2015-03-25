@@ -50,71 +50,77 @@ void Gems::update(float dt)
 
     //宝石闪烁
     glintCount++;
-    if(glintCount>=glintTime){
+    if(glintCount>=glintTime)
+	{
         this->setVisible(true);
         isDisappear = true;
         this->unscheduleUpdate();
         this->removeFromParentAndCleanup(true);
-    }else{
+    }
+	else
+	{
         //宝石的闪烁效果
-        if(glintCount%20==0){
+        if(glintCount%20==0)
+		{
             this->setVisible(false);
-        }else{
+        }
+		else
+		{
             this->setVisible(true);
         }
-    }
+		//碰撞检测
+		NewPlayer *player = LevelScene::sharedLevelScene()->getPlayer();
+		if(!player->isDead)
+		{
+			if(player->getBoundingBox().intersectsRect(this->getBoundingBox()))
+			{				
+				switch(gemType)
+				{
+					case 0:    //改变飞机类型
+					{
+						if(playerType <= 3)
+						{
+							LevelScene::sharedLevelScene()->isPlayerChange = true;
+							playerType++;
+						}
+						break;
+					}
+					case 1:    //加血
+					{ 
+						if(player->hp<3)
+						{
+							player->addHp();
+							player->hp++;
+						} 
+						break;
+					}
+					case 2:    //加大招1
+					{
+						Node *skill = UniqueSkill::createUniqueSkill("skill1.png", 1);
+						LevelScene::sharedLevelScene()->addChild(skill);
+						skill1Count++;
+						break;
+					}
+					case 3:    //加大招2
+					{
+						Node *skill = UniqueSkill::createUniqueSkill("skill2.png", 2);
+						LevelScene::sharedLevelScene()->addChild(skill);
+						skill2Count++;
+						break;
+					}
+					case 4:    //加大招3
+					{
+						Node *skill = UniqueSkill::createUniqueSkill("skill3.png", 3);
+						LevelScene::sharedLevelScene()->addChild(skill);
+						skill3Count++;
+						break;
+					}
+					default:
+						break;
+				}
+				this->removeFromParentAndCleanup(true);
+			}
+		}
+    }    
     
-    //碰撞检测
-    NewPlayer *player = LevelScene::sharedLevelScene()->getPlayer();
-    if(!player->isDead)
-    {
-        if(player->getBoundingBox().intersectsRect(this->getBoundingBox()))
-        {
-            this->removeFromParentAndCleanup(true);
-            switch(gemType)
-            {
-                case 0:    //改变飞机类型
-                {
-                    if(playerType <= 3)
-                    {
-                        LevelScene::sharedLevelScene()->isPlayerChange = true;
-                        playerType++;
-                    }
-                    break;
-                }
-                case 1:    //加血
-                { 
-                    if(player->hp<3)
-                    {
-                        player->addHp();
-                        player->hp++;
-                    } 
-                    break;
-                }
-                case 2:    //加大招1
-                {
-                    Node *skill = UniqueSkill::createUniqueSkill("skill1.png", 1);
-                    LevelScene::sharedLevelScene()->addChild(skill);
-                    skill1Count++;
-                    break;
-                }
-                case 3:    //加大招2
-                {
-                    Node *skill = UniqueSkill::createUniqueSkill("skill2.png", 2);
-                    LevelScene::sharedLevelScene()->addChild(skill);
-                    skill2Count++;
-                    break;
-                }
-                case 4:    //加大招3
-                {
-                    Node *skill = UniqueSkill::createUniqueSkill("skill3.png", 3);
-                    LevelScene::sharedLevelScene()->addChild(skill);
-                    skill3Count++;
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    }
 }

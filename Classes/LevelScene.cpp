@@ -103,7 +103,7 @@ bool LevelScene::init()
         case 2:
         {
             creatEnemyInterval = 450;
-            passCreatEnemy = true;
+            passCreatEnemy = false;
             
             //播放游戏中的音乐
             SimpleAudioEngine::getInstance()->playBackgroundMusic("gameMusic.mp3",true);
@@ -648,7 +648,7 @@ void LevelScene::lostGame()
     addChild(layer,100);
     
     //添加一个按钮用于返回Menu
-    Label* ttback =Label::createWithSystemFont("返回主菜单", "Helvetica-Bold", 23);
+    Label* ttback =Label::createWithSystemFont(Configuration::getInstance()->getValue("label.backMenu").asString(), "Helvetica-Bold", 23);
     MenuItemLabel* menuLabel= MenuItemLabel::create(ttback, CC_CALLBACK_1(LevelScene::backMenu, this));
     menuLabel->setPosition(Vec2(0,-200));
     Menu* menu =Menu::create(menuLabel,NULL);

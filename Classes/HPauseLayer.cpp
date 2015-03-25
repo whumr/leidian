@@ -24,11 +24,11 @@ bool HPauseLayer::init()
     
     // ¿ªÆô´¥¿Ø
     //setTouchEnabled(true);
-    MenuItemImage *play = MenuItemImage::create("backGame.png", "play.png");
+    MenuItemImage *play = MenuItemImage::create("backGame.png", "backGame.png");
     play->setTag(10);
     play->setPosition(Vec2(winSize.width/2, winSize.height/2+50));
     
-    MenuItemImage * back= MenuItemImage::create("backHome.png", "score_pre.png");
+    MenuItemImage * back= MenuItemImage::create("backHome.png", "backHome.png");
     back->setTag(20);
     back->setPosition(Vec2(winSize.width/2, winSize.height/2-50));
     
