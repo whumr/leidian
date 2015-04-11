@@ -34,7 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     if(!glview) {
         glview = GLViewImpl::create("My Game");        
 		glview->setFrameSize(512,768);
-		glview->setFrameZoomFactor(0.6f);
+		//glview->setFrameZoomFactor(0.6f);
 		pDirector->setOpenGLView(glview);
     }
 
